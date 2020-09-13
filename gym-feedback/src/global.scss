@@ -24,3 +24,65 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+  .container {
+    text-align: center;
+    font-family: 'Spartan', sans-serif;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    align-content: center;
+    margin: 2%;
+  }
+
+  .icons-check  {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  
+  .container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  .container p {
+    font-size: xx-large;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+
+  .icons-check p {
+    font-size: medium !important;
+  }
+
+  .container h2 {
+    font-size: xx-large;
+    margin-bottom: 3%;
+  }
+  
+  .container a {
+    text-decoration: none;
+  }
+
+  #StarRating {
+    font-size: 400%;
+  }
+
+  #StarRating ion-icon {
+    margin-left: 3%;
+  }
+
+  #icon-next{
+    margin-left: 3%;
+  }
+
+  ion-slides {
+    height: 100%;
+  }
+
+  ion-textarea {
+    width: 10%;
+  }

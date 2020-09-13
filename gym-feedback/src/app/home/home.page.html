@@ -1,20 +1,168 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-slides pager="true" [options]="slideOpts">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-slide>
+
+      <div class="container">
+
+        <ion-row>
+          <ion-col class="ion-align-self-start">
+            <h2>Como têm sido sua experiência na academia?</h2>   
+          </ion-col>
+        </ion-row>
+    
+        <ion-row>
+          <ion-col class="ion-align-self-center">
+            <div id="StarRating">
+              <ion-icon
+                name="star" 
+                *ngFor="let num of [1,2,3,4,5]" 
+                (click)="classificar(num)" 
+                [ngStyle]="{'color':colorir(num)}">
+              </ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+    
+        <ion-row>
+          <ion-col>
+            <p>{{titulo}}</p>
+          </ion-col>
+        </ion-row>
+    
+      </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      
+      <div class="container">
+
+        <ion-row>
+          <ion-col class="ion-align-self-start">
+            <h2>O que pode melhorar?</h2>   
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="icons-check">
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'clipboard-check']" 
+              (click)="check(0)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[0].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Organização</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'handshake']" 
+              (click)="check(1)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[1].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Atendimento</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'money-bill']" 
+              (click)="check(2)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[2].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Preço</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'broom']" 
+              (click)="check(3)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[3].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Limpeza</p>
+          </ion-col>
+
+        </ion-row>
+        
+        <ion-row class="icons-check" style="margin-top: 4%;">
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'dumbbell']" 
+              (click)="check(4)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[4].ativo)}"
+              size="2x">
+            </fa-icon>
+             <p>Variedade</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'briefcase-medical']" 
+              (click)="check(5)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[5].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Segurança</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'couch']" 
+              (click)="check(6)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[6].ativo)}"
+              size="2x">
+            </fa-icon>
+            <p>Ambiente</p>
+          </ion-col>
+
+          <ion-col>
+            <fa-icon 
+              [icon]="['fas', 'users']" 
+              (click)="check(7)" 
+              [ngStyle]="{'color': definirCorMelhorias(melhorias[7].ativo)}"
+              size="2x"></fa-icon>
+            <p>Lotação</p>
+          </ion-col>
+
+        </ion-row>
+
+      </div>
+
+    </ion-slide>
+
+    <ion-slide>
+      
+      <div class="container">
+
+        <ion-row>
+          <ion-col class="ion-align-self-start">
+            <h2>Deseja deixar um comentário?</h2>   
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-textarea placeholder="Deixe aqui seu feedback..."></ion-textarea>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button color="light" shape="round" size="large">
+              <fa-icon [icon]="['fas', 'paper-plane']" size="2x"></fa-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+
+    </ion-slide>
+
+  </ion-slides>
+
 </ion-content>
+
