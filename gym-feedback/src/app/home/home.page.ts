@@ -10,7 +10,7 @@ export class HomePage {
   //variaveis
   titulo: string = "Péssima";
   @Input() classificacao: number = 1;
-  @Output() ratingChange: EventEmitter<number> = new EventEmitter();
+  @Output() ClassificacaoMuda: EventEmitter<number> = new EventEmitter();
 
   melhorias = [
     {nome: 'organizacao', ativo: false},
@@ -35,7 +35,7 @@ export class HomePage {
 
   classificar(index: number) {
     this.classificacao = index;
-    this.ratingChange.emit(this.classificacao);
+    this.ClassificacaoMuda.emit(this.classificacao);
     this.definirTitulo();
   }
 

@@ -3,5 +3,5 @@ import { MelhoriasModel } from './melhorias.model';
 
 export class ManutencaoModel {
     feedback: FeedbackModel
-    melhorias: MelhoriasModel
+    melhorias: MelhoriasModel[]
 }
