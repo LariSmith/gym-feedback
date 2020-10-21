@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FeedbackService } from '../service/feedback.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +12,17 @@ export class HomePage {
   titulo: string = "Péssima";
   @Input() classificacao: number = 1;
   @Output() ClassificacaoMuda: EventEmitter<number> = new EventEmitter();
+  comentario = '';
 
   melhorias = [
-    {nome: 'organizacao', ativo: false},
-    {nome: 'atendimento', ativo: false},
-    {nome: 'preco', ativo: false},
-    {nome: 'limpeza', ativo: false},
-    {nome: 'variedade', ativo: false},
-    {nome: 'seguranca', ativo: false},
-    {nome: 'ambiente', ativo: false},
-    {nome: 'lotacao', ativo: false}
+    {nome: 'organizacao;', ativo: false},
+    {nome: 'atendimento;', ativo: false},
+    {nome: 'preco;', ativo: false},
+    {nome: 'limpeza;', ativo: false},
+    {nome: 'variedade;', ativo: false},
+    {nome: 'seguranca;', ativo: false},
+    {nome: 'ambiente;', ativo: false},
+    {nome: 'lotacao;', ativo: false}
   ]
 
 
@@ -29,7 +31,7 @@ export class HomePage {
     speed: 400
   };
 
-  constructor() {}
+  constructor(private service: FeedbackService) {}
 
   //metodos
 
@@ -95,6 +97,27 @@ export class HomePage {
     }
   }
 
+  enviar() {
+    var melhorias = '';
+    this.melhorias.forEach(element => {
+      if (element.ativo) {
+        melhorias += element.nome;
+      }
+    });        
+
+    let model = {};
+    model['Nota'] = this.classificacao;
+    model['Melhorias'] = melhorias;
+    model['Comentario'] = this.comentario;
+
+    this.service.create(model)
+      .then( result => {
+        console.log(result);
+        window.location.reload();
+      }).catch(error => {
+        console.log(error);
+      });
+  }
 
 }
 

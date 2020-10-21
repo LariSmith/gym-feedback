@@ -146,13 +146,13 @@
 
         <ion-row>
           <ion-col>
-            <ion-textarea placeholder="Deixe aqui seu feedback..."></ion-textarea>
+            <ion-textarea [(ngModel)]="comentario" placeholder="Deixe aqui seu feedback..."></ion-textarea>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col>
-            <ion-button color="light" shape="round" size="large">
+            <ion-button (click)="enviar()" color="light" shape="round" size="large">
               <fa-icon [icon]="['fas', 'paper-plane']" size="2x"></fa-icon>
             </ion-button>
           </ion-col>
