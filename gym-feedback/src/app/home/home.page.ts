@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { FeedbackService } from '../service/feedback.service';
 
 @Component({
@@ -31,7 +32,7 @@ export class HomePage {
     speed: 400
   };
 
-  constructor(private service: FeedbackService) {}
+  constructor(private service: FeedbackService, public alertController: AlertController) {}
 
   //metodos
 
@@ -110,13 +111,30 @@ export class HomePage {
     model['Melhorias'] = melhorias;
     model['Comentario'] = this.comentario;
 
-    this.service.create(model)
-      .then( result => {
-        console.log(result);
-        window.location.reload();
-      }).catch(error => {
-        console.log(error);
-      });
+    if (this.classificacao != 0) {
+      this.service.create(model)
+        .then( result => {
+          this.presentAlert("Enviado com sucesso!","Obrigado por deixar seu feedback");
+          this.classificacao = 0;
+          window.location.reload();
+        }).catch(error => {
+          this.presentAlert("Erro ao enviar","Espere alguns segundos e tente novamente mais tarde");
+        });
+    } else {
+      this.presentAlert("Avaliação incompleta!","Por favor, nos deixe uma avaliação");
+    }
+    
+  }
+
+  async presentAlert(header, message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
