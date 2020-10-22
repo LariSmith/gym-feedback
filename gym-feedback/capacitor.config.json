@@ -1,5 +1,5 @@
 {
-  "appId": "com.gymfeedback.ionicangular",
+  "appId": "io.ionic.starter",
   "appName": "gym-feedback",
   "bundledWebRuntime": false,
   "npmClient": "npm",
@@ -9,9 +9,5 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {},
-  "server": {
-    "url": "http://192.168.42.198:8100",
-    "originalUrl": "http://192.168.42.198:8100"
-  }
+  "cordova": {}
 }
