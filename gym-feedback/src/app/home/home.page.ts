@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { FeedbackService } from '../service/feedback.service';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +12,18 @@ export class HomePage {
   //variaveis
   titulo: string = "Péssima";
   @Input() classificacao: number = 1;
-  @Output() ratingChange: EventEmitter<number> = new EventEmitter();
+  @Output() ClassificacaoMuda: EventEmitter<number> = new EventEmitter();
+  comentario = '';
 
   melhorias = [
-    {nome: 'organizacao', ativo: false},
-    {nome: 'atendimento', ativo: false},
-    {nome: 'preco', ativo: false},
-    {nome: 'limpeza', ativo: false},
-    {nome: 'variedade', ativo: false},
-    {nome: 'seguranca', ativo: false},
-    {nome: 'ambiente', ativo: false},
-    {nome: 'lotacao', ativo: false}
+    {nome: 'organizacao;', ativo: false},
+    {nome: 'atendimento;', ativo: false},
+    {nome: 'preco;', ativo: false},
+    {nome: 'limpeza;', ativo: false},
+    {nome: 'variedade;', ativo: false},
+    {nome: 'seguranca;', ativo: false},
+    {nome: 'ambiente;', ativo: false},
+    {nome: 'lotacao;', ativo: false}
   ]
 
 
@@ -29,13 +32,13 @@ export class HomePage {
     speed: 400
   };
 
-  constructor() {}
+  constructor(private service: FeedbackService, public alertController: AlertController) {}
 
   //metodos
 
   classificar(index: number) {
     this.classificacao = index;
-    this.ratingChange.emit(this.classificacao);
+    this.ClassificacaoMuda.emit(this.classificacao);
     this.definirTitulo();
   }
 
@@ -95,6 +98,44 @@ export class HomePage {
     }
   }
 
+  enviar() {
+    var melhorias = '';
+    this.melhorias.forEach(element => {
+      if (element.ativo) {
+        melhorias += element.nome;
+      }
+    });        
+
+    let model = {};
+    model['Nota'] = this.classificacao;
+    model['Melhorias'] = melhorias;
+    model['Comentario'] = this.comentario;
+
+    if (this.classificacao != 0) {
+      this.service.create(model)
+        .then( result => {
+          this.presentAlert("Enviado com sucesso!","Obrigado por deixar seu feedback");
+          this.classificacao = 0;
+          window.location.reload();
+        }).catch(error => {
+          this.presentAlert("Erro ao enviar","Espere alguns segundos e tente novamente mais tarde");
+        });
+    } else {
+      this.presentAlert("Avaliação incompleta!","Por favor, nos deixe uma avaliação");
+    }
+    
+  }
+
+  async presentAlert(header, message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
 }
 
