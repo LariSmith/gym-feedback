@@ -1,7 +1,14 @@
 ion-slides {
-    background-color: black !important;
-  }
+  background-color: black !important;
+  text-align: justify !important;
+}
   
-  ion-slides h2, ion-textarea {
-    color: white;
-  }
+ion-slides h2, ion-textarea {
+  color: white;
+}
+
+.swiper-slide {
+  text-align: justify !important;
+  overflow-y: scroll;    
+  display: block;  
+}

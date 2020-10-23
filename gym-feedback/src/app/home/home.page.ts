@@ -16,14 +16,14 @@ export class HomePage {
   comentario = '';
 
   melhorias = [
-    {nome: 'Organizacao;', ativo: false},
+    {nome: 'Organização;', ativo: false},
     {nome: 'Atendimento;', ativo: false},
-    {nome: 'Preco;', ativo: false},
+    {nome: 'Preço;', ativo: false},
     {nome: 'Limpeza;', ativo: false},
     {nome: 'Variedade;', ativo: false},
-    {nome: 'Seguranca;', ativo: false},
+    {nome: 'Segurança;', ativo: false},
     {nome: 'Ambiente;', ativo: false},
-    {nome: 'Lotacao;', ativo: false}
+    {nome: 'Lotação;', ativo: false}
   ]
 
 

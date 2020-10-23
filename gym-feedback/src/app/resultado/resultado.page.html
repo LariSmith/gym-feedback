@@ -1,7 +1,32 @@
 <ion-content>
-  <ngx-datatable [rowHeight]="'auto'" [headerHeight]="50" [columnMode]="'force'" class="bootstrap" [rows]="feedback">
-    <ngx-datatable-column name="Nota"></ngx-datatable-column>
-    <ngx-datatable-column name="Melhorias"></ngx-datatable-column>
-    <ngx-datatable-column name="Comentario"></ngx-datatable-column>
-  </ngx-datatable>
+  <ion-slides pager="true" [options]="slideOpts">
+    
+    <ion-slide>
+      <canvas id="barCanvasAvaliacao"></canvas>
+    </ion-slide>
+
+    <ion-slide>
+      <canvas id="barCanvasMelhorias"></canvas>
+    </ion-slide>
+
+    <ion-slide style="padding: 2%;">
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let item of comentarios">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Comentário</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                {{item}}
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </ion-slide>
+
+  </ion-slides>
+  
 </ion-content>

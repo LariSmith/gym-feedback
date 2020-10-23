@@ -109,8 +109,8 @@
   background: white;
 }
 
-.dark {
-  background-color: black;
+.dark, .input-wrapper, .item-inner {
+  background-color: black !important;
 }
 
 .ngx-datatable.dark {
@@ -724,6 +724,7 @@ bootstrap table theme
   box-shadow: none;
   font-size: 15px;
   font-family: 'Spartan', sans-serif;
+  background-color: black;
   .datatable-header {
     height: unset !important;
     .datatable-header-cell {
