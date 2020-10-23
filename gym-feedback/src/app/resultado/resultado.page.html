@@ -1,9 +1,7 @@
 <ion-content>
-  <ion-slides pager="true" [options]="slideOpts">
-    <ion-slide>
-      <div class="container">
-        
-      </div>
-    </ion-slide>
-  </ion-slides>
+  <ngx-datatable [rowHeight]="'auto'" [headerHeight]="50" [columnMode]="'force'" class="bootstrap" [rows]="feedback">
+    <ngx-datatable-column name="Nota"></ngx-datatable-column>
+    <ngx-datatable-column name="Melhorias"></ngx-datatable-column>
+    <ngx-datatable-column name="Comentario"></ngx-datatable-column>
+  </ngx-datatable>
 </ion-content>

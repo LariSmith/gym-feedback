@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ResultadoPageRoutingModule } from './resultado-routing.module';
 
 import { ResultadoPage } from './resultado.page';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ResultadoPageRoutingModule
+    ResultadoPageRoutingModule,
+    NgxDatatableModule
   ],
   declarations: [ResultadoPage]
 })

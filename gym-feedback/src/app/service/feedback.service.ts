@@ -14,7 +14,7 @@ export class FeedbackService {
   }
 
   get() {
-    return this.firestore.collection('feedback').get();
+    return this.firestore.collection('feedback').snapshotChanges();
   }
 
   

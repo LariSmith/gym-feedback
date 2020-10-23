@@ -16,14 +16,14 @@ export class HomePage {
   comentario = '';
 
   melhorias = [
-    {nome: 'organizacao;', ativo: false},
-    {nome: 'atendimento;', ativo: false},
-    {nome: 'preco;', ativo: false},
-    {nome: 'limpeza;', ativo: false},
-    {nome: 'variedade;', ativo: false},
-    {nome: 'seguranca;', ativo: false},
-    {nome: 'ambiente;', ativo: false},
-    {nome: 'lotacao;', ativo: false}
+    {nome: 'Organizacao;', ativo: false},
+    {nome: 'Atendimento;', ativo: false},
+    {nome: 'Preco;', ativo: false},
+    {nome: 'Limpeza;', ativo: false},
+    {nome: 'Variedade;', ativo: false},
+    {nome: 'Seguranca;', ativo: false},
+    {nome: 'Ambiente;', ativo: false},
+    {nome: 'Lotacao;', ativo: false}
   ]
 
 
@@ -102,7 +102,7 @@ export class HomePage {
     var melhorias = '';
     this.melhorias.forEach(element => {
       if (element.ativo) {
-        melhorias += element.nome;
+        melhorias += element.nome + "\n";
       }
     });        
 
