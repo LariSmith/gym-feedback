@@ -11,6 +11,19 @@
 
     <ion-slide style="padding: 2%;">
       <div id="container">
+
+        <ion-item style="width: 30%; margin-left: auto; margin-right: auto;">
+          <ion-label>Nota</ion-label>
+          <ion-select [(ngModel)]="selectValue" (ionChange)="onChange()">
+            <ion-select-option value=1>★</ion-select-option>
+            <ion-select-option value=2>★★</ion-select-option>
+            <ion-select-option value=3>★★★</ion-select-option>
+            <ion-select-option value=4>★★★★</ion-select-option>
+            <ion-select-option value=5>★★★★★</ion-select-option>
+            <ion-select-option value=6>Todos</ion-select-option>
+          </ion-select>
+        </ion-item>
+
         <ion-grid>
           <ion-row *ngFor="let item of comentarios">
             <ion-col >

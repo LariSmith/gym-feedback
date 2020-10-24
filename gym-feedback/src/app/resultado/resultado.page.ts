@@ -18,6 +18,8 @@ export class ResultadoPage implements OnInit {
   notas: Array<number> = [];
   melhorias: Array<number> = [];
   comentarios: Array<FeedbackModel> = [];
+  comentariosReserva: Array<FeedbackModel> = [];
+  selectValue: number = 6;
 
   constructor(private service: FeedbackService) { }
 
@@ -164,7 +166,7 @@ export class ResultadoPage implements OnInit {
           lotacao = element.melhorias.includes("Lotação") ? lotacao+1 : lotacao; 
 
           if (element.comentario != "") {
-            this.comentarios.push(element);
+            this.carregarComentarios(element, null);
           }
           
         });
@@ -180,5 +182,29 @@ export class ResultadoPage implements OnInit {
       this.carregarChartMelhorias();
     });
   }
+
+  onChange() {
+    this.carregarComentarios(null, this.selectValue);
+    this.comentarios.sort(function(a,b) {
+      return a.data.localeCompare(b.data);        
+    });
+  }
+
+  carregarComentarios(lista, filtro) {
+    if (lista != null) {
+      this.comentarios.push(lista);
+      this.comentariosReserva.push(lista);
+    }
+
+    if (filtro != null) {
+      if (filtro > 0 && filtro < 6) {
+        this.comentarios = this.comentariosReserva.filter(x => x.nota == filtro);
+      } else {
+        this.comentarios = this.comentariosReserva;
+      }      
+    }
+    
+  }
+
 
 }
