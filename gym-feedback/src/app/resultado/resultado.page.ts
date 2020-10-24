@@ -17,14 +17,12 @@ export class ResultadoPage implements OnInit {
   feedback: Array<FeedbackModel> = [];
   notas: Array<number> = [];
   melhorias: Array<number> = [];
-  comentarios: Array<string> = [];
+  comentarios: Array<FeedbackModel> = [];
 
   constructor(private service: FeedbackService) { }
 
   ngOnInit() {
     this.carregarFeedback();
-    this.carregarChartAvaliacao();
-    this.carregarChartMelhorias();
   }
 
   carregarChartAvaliacao() {
@@ -129,10 +127,10 @@ export class ResultadoPage implements OnInit {
             feedback: e.payload.doc.data()['Nota'] == 1? "★": 
               (e.payload.doc.data()['Nota'] == 2 ? "★★": 
               (e.payload.doc.data()['Nota'] == 3 ? "★★★" : 
-              (e.payload.doc.data()['Nota'] == 4 ? "★★★★" : "★★★★★")))
+              (e.payload.doc.data()['Nota'] == 4 ? "★★★★" : "★★★★★"))),
+            data: e.payload.doc.data()['Data']
           };
         });
-        console.log(this.feedback);
         var nota1 = 0, nota2 = 0, nota3 = 0, nota4 = 0, nota5 = 0;
         var organizacao = 0, atendimento = 0, preco = 0, limpeza = 0, variedade = 0, seguranca = 0, ambiente = 0, lotacao = 0;
         
@@ -166,13 +164,20 @@ export class ResultadoPage implements OnInit {
           lotacao = element.melhorias.includes("Lotação") ? lotacao+1 : lotacao; 
 
           if (element.comentario != "") {
-            this.comentarios.push(element.comentario);
+            this.comentarios.push(element);
           }
           
         });
 
       this.notas.push(nota1,nota2,nota3,nota4,nota5);
       this.melhorias.push(organizacao,atendimento,preco,limpeza,variedade,seguranca,ambiente,lotacao);
+
+      this.comentarios.sort(function(a,b) {
+        return a.data.localeCompare(b.data);        
+      });
+
+      this.carregarChartAvaliacao();
+      this.carregarChartMelhorias();
     });
   }
 

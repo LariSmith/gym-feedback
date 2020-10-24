@@ -105,11 +105,13 @@ export class HomePage {
         melhorias += element.nome + "\n";
       }
     });        
+    var data = new Date();
 
     let model = {};
     model['Nota'] = this.classificacao;
     model['Melhorias'] = melhorias;
     model['Comentario'] = this.comentario;
+    model['Data'] = data.toLocaleDateString();
 
     if (this.classificacao != 0) {
       this.service.create(model)

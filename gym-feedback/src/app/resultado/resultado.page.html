@@ -10,20 +10,23 @@
     </ion-slide>
 
     <ion-slide style="padding: 2%;">
-      <ion-grid>
-        <ion-row>
-          <ion-col *ngFor="let item of comentarios">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Comentário</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                {{item}}
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <div id="container">
+        <ion-grid>
+          <ion-row *ngFor="let item of comentarios">
+            <ion-col >
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>{{item.feedback}}</ion-card-subtitle>
+                  <ion-card-title>{{item.data}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  {{item.comentario}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
       
     </ion-slide>
 
