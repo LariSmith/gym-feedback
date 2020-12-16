@@ -1,0 +1,48 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    
+    <ion-slide>
+      <canvas id="barCanvasAvaliacao"></canvas>
+    </ion-slide>
+
+    <ion-slide>
+      <canvas id="barCanvasMelhorias"></canvas>
+    </ion-slide>
+
+    <ion-slide style="padding: 2%;">
+      <div id="container">
+
+        <ion-item style="width: 30%; margin-left: auto; margin-right: auto;">
+          <ion-label>Nota</ion-label>
+          <ion-select [(ngModel)]="selectValue" (ionChange)="onChange()">
+            <ion-select-option value=1>★</ion-select-option>
+            <ion-select-option value=2>★★</ion-select-option>
+            <ion-select-option value=3>★★★</ion-select-option>
+            <ion-select-option value=4>★★★★</ion-select-option>
+            <ion-select-option value=5>★★★★★</ion-select-option>
+            <ion-select-option value=6>Todos</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-grid>
+          <ion-row *ngFor="let item of comentarios">
+            <ion-col >
+              <ion-card>
+                <ion-card-header>
+                  <ion-card-subtitle>{{item.feedback}}</ion-card-subtitle>
+                  <ion-card-title>{{item.data}}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  {{item.comentario}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      
+    </ion-slide>
+
+  </ion-slides>
+  
+</ion-content>

@@ -1,0 +1,19 @@
+ion-slides {
+  background-color: black !important;
+  text-align: justify !important;
+}
+  
+ion-slides h2, ion-textarea {
+  color: white;
+}
+
+ion-card {
+  background-color: black;
+  text-align: justify;
+}
+
+.swiper-slide {
+  text-align: justify !important;
+  overflow-y: scroll;    
+  display: block;  
+}

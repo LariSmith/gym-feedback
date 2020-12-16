@@ -1,5 +1,8 @@
 export class FeedbackModel {
-    id: number
+    id: string
     nota: number
+    feedback: string
+    melhorias: string
+    data: string
     comentario: string
 }

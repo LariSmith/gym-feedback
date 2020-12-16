@@ -16,14 +16,14 @@ export class HomePage {
   comentario = '';
 
   melhorias = [
-    {nome: 'organizacao;', ativo: false},
-    {nome: 'atendimento;', ativo: false},
-    {nome: 'preco;', ativo: false},
-    {nome: 'limpeza;', ativo: false},
-    {nome: 'variedade;', ativo: false},
-    {nome: 'seguranca;', ativo: false},
-    {nome: 'ambiente;', ativo: false},
-    {nome: 'lotacao;', ativo: false}
+    {nome: 'Organização;', ativo: false},
+    {nome: 'Atendimento;', ativo: false},
+    {nome: 'Preço;', ativo: false},
+    {nome: 'Limpeza;', ativo: false},
+    {nome: 'Variedade;', ativo: false},
+    {nome: 'Segurança;', ativo: false},
+    {nome: 'Ambiente;', ativo: false},
+    {nome: 'Lotação;', ativo: false}
   ]
 
 
@@ -102,14 +102,16 @@ export class HomePage {
     var melhorias = '';
     this.melhorias.forEach(element => {
       if (element.ativo) {
-        melhorias += element.nome;
+        melhorias += element.nome + "\n";
       }
     });        
+    var data = new Date();
 
     let model = {};
     model['Nota'] = this.classificacao;
     model['Melhorias'] = melhorias;
     model['Comentario'] = this.comentario;
+    model['Data'] = data.toLocaleDateString();
 
     if (this.classificacao != 0) {
       this.service.create(model)
